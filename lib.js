@@ -5,7 +5,7 @@ const { parse: htmlParse } = require('node-html-parser');
 module.exports = (
   uri,
   searchKeyword,
-  tagBlockSelector,
+  elementSelector,
   checkPeriodInSeconds
 ) => {
   let lastMessages = [];
@@ -38,7 +38,7 @@ module.exports = (
           callback: function(error, res) {
             if (error) reject(error);
 
-            const html = htmlParse(res.body).querySelector(tagBlockSelector)
+            const html = htmlParse(res.body).querySelector(elementSelector)
               .rawText;
             resolve(getPageData(html, searchKeyword));
           }

@@ -5,14 +5,15 @@ const searchKeyword =
     ? null
     : process.argv[2].toLowerCase();
 const checkPeriodInSeconds = !process.argv[3] ? 2 : +process.argv[3];
-const tagBlockSelector = process.argv[4] || '.tab-content #home';
+const elementSelector = process.argv[4] || '.tab-content #home';
 const uri = process.argv[5] || 'http://www.simar-louresodivelas.pt/';
 
 console.log('Running with configs', {
   uri,
   checkPeriodInSeconds,
-  tagBlockSelector,
+  elementSelector,
   searchKeyword
 });
+console.log(`Waiting for changes on '${uri}' > '${elementSelector}' ...`);
 
-run(uri, searchKeyword, tagBlockSelector, checkPeriodInSeconds);
+run(uri, searchKeyword, elementSelector, checkPeriodInSeconds);
