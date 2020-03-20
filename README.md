@@ -11,31 +11,31 @@ Note: by default the search will be on http://www.simar-louresodivelas.pt/ index
 ### Install
 
 ```
-$ git clone https://github.com/hugomcm/water-failure.git
-$ cd water-failure
-$ npm i
+git clone https://github.com/hugomcm/water-failure.git
+cd water-failure
+npm i
 ```
 
 ### Run
 
 ```
 # Usage
-$ node index.js [search string] [check period in seconds] [html element selector] [uri to get the html content]
+npm start [search string] [check period in seconds] [html element selector] [uri to get the html content]
 ```
 
 ```
 # Default call
-$ npm start
+npm start
 ```
 
 ```
 # The same as the default call
-$ npm start '' 2 '.tab-content #home' 'http://www.simar-louresodivelas.pt/'
+npm start '' 2 '.tab-content #home' 'http://www.simar-louresodivelas.pt/'
 ```
 
 ```
 # Searches for keyword 'Ramada' with a periodicity of 10 seconds
-$ npm start 'Ramada' 10
+npm start 'Ramada' 10
 ```
 
 ## On a Docker container
@@ -43,7 +43,7 @@ $ npm start 'Ramada' 10
 ### Build image
 
 ```
-$ docker image build -f Dockerfile -t water-failure .
+docker image build -f Dockerfile -t water-failure .
 ```
 
 ### Run container
@@ -52,34 +52,34 @@ $ docker image build -f Dockerfile -t water-failure .
 
 ```
 # Run commandline
-$ docker container run -it --rm --name check-water-failure-onlocation --entrypoint /bin/bash water-failure
+docker container run -it --rm --name check-water-failure-onlocation --entrypoint /bin/bash water-failure
 ```
 
 ```
 # Run detached
-$ docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 10
+docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 10
 ```
 
 #### Production
 
 ```
 # Run detached
-$ docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 3600
+docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 3600
 ```
 
 #### Common
 
 ```
 # Attach | Detach with interrupt: "^P^Q"
-$ docker attach check-water-failure-onlocation
+docker attach check-water-failure-onlocation
 ```
 
 ```
 # Exec bash on container
-$ docker container exec -it check-water-failure-onlocation /bin/bash
+docker container exec -it check-water-failure-onlocation /bin/bash
 ```
 
 ```
 # Logs
-$ docker logs check-water-failure-onlocation
+docker logs check-water-failure-onlocation
 ```
