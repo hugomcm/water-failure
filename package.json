@@ -1,0 +1,26 @@
+{
+  "name": "water-failure",
+  "version": "1.0.0",
+  "description": "Checks the water supply failure for a certain keyword, ex: 'Ramada' ",
+  "scripts": {
+    "start": "node index.js",
+    "example": "node index.js Ramada 3600"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hugomcm/water-failure.git"
+  },
+  "keywords": [
+    "water supply failure",
+    "simar-louresodivelas",
+    "simar",
+    "loures",
+    "odivelas"
+  ],
+  "author": "Hugo Monteiro",
+  "license": "ISC",
+  "dependencies": {
+    "crawler": "^1.2.1",
+    "node-html-parser": "^1.2.13"
+  }
+}
