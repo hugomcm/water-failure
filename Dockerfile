@@ -9,7 +9,7 @@ RUN echo "alias ls='ls -alF --color=auto'" >> /home/node/.bashrc
 RUN mkdir -p /home/node/water-failure
 WORKDIR /home/node/water-failure
 
-COPY index.js lib.js package.json ./
+COPY index.js lib.js test-email.js package.json package-lock.json ./
 
 RUN npm i
 
