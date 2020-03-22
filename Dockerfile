@@ -1,7 +1,8 @@
 # Base image
 FROM node:12.16.1-stretch-slim
 
-RUN apt-get update && apt-get upgrade -y;
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install vim.tiny -y
 
 USER node
 RUN echo "alias ls='ls -alF --color=auto'" >> /home/node/.bashrc

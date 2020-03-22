@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "crawler": "^1.2.1",
-    "node-html-parser": "^1.2.13"
+    "node-html-parser": "^1.2.13",
+    "nodemailer": "^6.4.6"
   }
 }

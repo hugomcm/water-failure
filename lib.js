@@ -56,6 +56,15 @@ module.exports = (
 
   function sendEmailMsg(msgsArr) {
     // TODO: send email thu API
+    // const recipients = ['destination@example.com', 'destination2@example.com'];
+    // const recipients = [];
+    // exec(
+    //   `echo ${msgsArr.join(
+    //     '\n'
+    //   )} | mail -s "Notificação de falta de água" -aFrom:NAME\<info@example.com\> ${recipients.join(
+    //     ','
+    //   )}`
+    // );
     console.log({ msgsArr });
     console.log(`Notification email sent @ ${new Date()}`);
   }
