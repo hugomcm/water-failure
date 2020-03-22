@@ -13,4 +13,7 @@ COPY index.js lib.js test-email.js package.json package-lock.json ./
 
 RUN npm i
 
+USER root
+WORKDIR /home/node/water-failure
+
 ENTRYPOINT ["npm", "start"]
