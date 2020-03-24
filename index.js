@@ -1,19 +1,35 @@
 const run = require('./lib');
 
-const searchKeyword =
-  !process.argv[2] || process.argv[2] === ''
-    ? null
-    : process.argv[2].toLowerCase();
-const checkPeriodInSeconds = !process.argv[3] ? 2 : +process.argv[3];
-const elementSelector = process.argv[4] || '.tab-content #home';
-const uri = process.argv[5] || 'http://www.simar-louresodivelas.pt/';
+try {
+  const searchKeyword =
+    !process.argv[2] || process.argv[2] === ''
+      ? null
+      : process.argv[2].toLowerCase();
+  const emailSettingsFrom = !process.argv[3] ? null : process.argv[3];
+  const emailSettingsTo = !process.argv[4] ? null : process.argv[4].split(',');
+  const checkPeriodInSeconds = !process.argv[5] ? 2 : +process.argv[5];
+  const elementSelector = process.argv[6] || '.tab-content #home';
+  const uri = process.argv[7] || 'http://www.simar-louresodivelas.pt/';
 
-console.log('Running with configs', {
-  uri,
-  checkPeriodInSeconds,
-  elementSelector,
-  searchKeyword
-});
-console.log(`Waiting for changes on '${uri}' > '${elementSelector}' ...`);
+  if (!emailSettingsFrom || !emailSettingsTo) {
+    throw 'No From or To email addresses passed.';
+  }
 
-run(uri, searchKeyword, elementSelector, checkPeriodInSeconds);
+  const emailSettings = {
+    from: emailSettingsFrom,
+    to: emailSettingsTo
+  };
+
+  console.log('Running with configs', {
+    uri,
+    checkPeriodInSeconds,
+    elementSelector,
+    searchKeyword,
+    emailSettings
+  });
+  console.log(`Waiting for changes on '${uri}' > '${elementSelector}' ...`);
+
+  run(uri, searchKeyword, elementSelector, checkPeriodInSeconds, emailSettings);
+} catch (err) {
+  console.error(err);
+}

@@ -1,12 +1,14 @@
 const fs = require('fs');
 const Crawler = require('crawler');
+const sendmail = require('./sendmail');
 const { parse: htmlParse } = require('node-html-parser');
 
 module.exports = (
   uri,
   searchKeyword,
   elementSelector,
-  checkPeriodInSeconds
+  checkPeriodInSeconds,
+  emailSettings
 ) => {
   let lastMessages = [];
   let firstRun = true;
@@ -54,28 +56,17 @@ module.exports = (
     );
   }
 
-  function sendEmailMsg(msgsArr) {
-    // TODO: send email thu API
-    // const recipients = ['destination@example.com', 'destination2@example.com'];
-    // const recipients = [];
-    // exec(
-    //   `echo ${msgsArr.join(
-    //     '\n'
-    //   )} | mail -s "Notificação de falta de água" -aFrom:NAME\<info@example.com\> ${recipients.join(
-    //     ','
-    //   )}`
-    // );
-    console.log({ msgsArr });
-    console.log(`Notification email sent @ ${new Date()}`);
+  function sendNotification(subject, msgsArr) {
+    sendmail(emailSettings, subject, msgsArr);
   }
 
   setInterval(async () => {
-    const messages = await crawl(uri, searchKeyword);
+    const messages = await crawlTest(uri, searchKeyword);
     // console.log(messages);
     if (!firstRun) {
       const newMsgs = diff(messages, lastMessages);
       if (newMsgs.length > 0) {
-        sendEmailMsg(newMsgs);
+        sendNotification(`Falta de água em '${searchKeyword}'`, newMsgs);
       }
     } else {
       firstRun = false;
