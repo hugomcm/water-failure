@@ -61,7 +61,7 @@ module.exports = (
   }
 
   setInterval(async () => {
-    const messages = await crawlTest(uri, searchKeyword);
+    const messages = await crawl(uri, searchKeyword);
     // console.log(messages);
     if (!firstRun) {
       const newMsgs = diff(messages, lastMessages);
