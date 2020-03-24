@@ -24,18 +24,18 @@ npm start [search string] [check period in seconds] [html element selector] [uri
 ```
 
 ```
-# Default call
+# Default call throws error if no email addresses aren't passed
 npm start
 ```
 
 ```
 # The same as the default call
-npm start '' 2 '.tab-content #home' 'http://www.simar-louresodivelas.pt/'
+npm start '' null null 2 '.tab-content #home' 'http://www.simar-louresodivelas.pt/'
 ```
 
 ```
 # Searches for keyword 'Ramada' with a periodicity of 10 seconds
-npm start 'Ramada' 10
+npm start 'Ramada' info@example.com dest1@example.com,dest2@example.com 10
 ```
 
 ## On a Docker container
