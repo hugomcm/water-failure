@@ -62,7 +62,7 @@ module.exports = (
 
   setInterval(async () => {
     const messages = await crawl(uri, searchKeyword);
-    // console.log(messages);
+    console.log(Date.now(), ': ', uri, ' > ', messages.join(', '));
     if (!firstRun) {
       const newMsgs = diff(messages, lastMessages);
       if (newMsgs.length > 0) {
