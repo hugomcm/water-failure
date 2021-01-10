@@ -18,7 +18,7 @@
     "odivelas"
   ],
   "author": "Hugo Monteiro",
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
   "dependencies": {
     "crawler": "^1.2.1",
     "node-html-parser": "^1.2.13",
