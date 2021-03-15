@@ -1,10 +1,9 @@
 {
   "name": "water-failure",
-  "version": "1.0.0",
-  "description": "Checks the water supply failure for a certain keyword, ex: 'Ramada' ",
+  "version": "1.0.1",
+  "description": "Checks the water supply failure for a certain keyword",
   "scripts": {
-    "start": "node index.js",
-    "example": "node index.js Ramada 3600"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,7 @@
   "author": "Hugo Monteiro",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.2",
     "crawler": "^1.2.1",
     "node-html-parser": "^1.2.13",
     "nodemailer": "^6.4.6"

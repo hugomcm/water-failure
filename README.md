@@ -24,7 +24,7 @@ npm start [search string] [check period in seconds] [html element selector] [uri
 ```
 
 ```
-# Default call throws error if no email addresses aren't passed
+# Default call throws error if no email addresses passed
 npm start
 ```
 
@@ -38,7 +38,7 @@ npm start '' null null 2 '.tab-content #home' 'http://www.simar-louresodivelas.p
 npm start 'Ramada' info@example.com dest1@example.com,dest2@example.com 10
 ```
 
-## On a Docker container
+## Launch with docker
 
 ### Build image
 
@@ -52,34 +52,39 @@ docker image build -f Dockerfile -t water-failure .
 
 ```
 # Run commandline
-docker container run -it --rm --name check-water-failure-onlocation --entrypoint /bin/bash water-failure
+docker container run -it --rm --name check-water-failure --entrypoint /bin/bash water-failure
 ```
 
 ```
 # Run detached
-docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 10
-```
-
-#### Production
-
-```
-# Run detached
-docker container run -d -it --rm --name check-water-failure-onlocation water-failure Ramada 3600
+docker container run -d -it --rm --name check-water-failure water-failure Ramada 10
 ```
 
 #### Common
 
 ```
-# Attach | Detach with interrupt: "^P^Q"
-docker attach check-water-failure-onlocation
-```
-
-```
 # Exec bash on container
-docker container exec -it check-water-failure-onlocation /bin/bash
+docker container exec -it check-water-failure /bin/bash
 ```
 
 ```
 # Logs
-docker logs check-water-failure-onlocation
+docker logs check-water-failure
+```
+
+## Launch with docker-compose
+```
+# instead of passing the arguments use a .env file
+# copy the default and configure the .env file with your own settings
+cat .env.default > .env
+```
+
+```
+# bring up
+docker-compose up -d
+```
+
+```
+# tear down
+docker-compose down
 ```
