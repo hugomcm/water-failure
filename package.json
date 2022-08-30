@@ -1,6 +1,6 @@
 {
   "name": "water-failure",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Checks the water supply failure for a certain keyword",
   "scripts": {
     "start": "node index.js"

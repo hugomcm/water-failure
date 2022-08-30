@@ -14,13 +14,14 @@ module.exports = ({ from, to }, subject, lineMessages) => {
     text: txtMsg,
     html: `<div>${htmlMsg}</div>`,
   }
-  sgMail
+  return sgMail
     .send(email)
     .then(info => {
       console.log('Email sent')
       // console.log(info)
       // console.log(info.envelope);
       // console.log(info.messageId);
+      return info
     })
     .catch(error => {
       console.error(error)
