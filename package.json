@@ -1,27 +1,28 @@
 {
-  "name": "water-failure",
-  "version": "1.0.2",
-  "description": "Checks the water supply failure for a certain keyword",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hugomcm/water-failure.git"
-  },
-  "keywords": [
-    "water supply failure",
-    "simar-louresodivelas",
-    "simar",
-    "loures",
-    "odivelas"
-  ],
-  "author": "Hugo Monteiro",
-  "license": "AGPL-3.0-or-later",
-  "dependencies": {
-    "@sendgrid/mail": "^7.4.2",
-    "crawler": "^1.2.1",
-    "node-html-parser": "^1.2.13",
-    "nodemailer": "^6.6.1"
-  }
+	"name": "@doit4u/water-failure",
+	"version": "1.0.2",
+	"description": "Checks the water supply failure for a certain keyword",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/hugomcm/water-failure.git"
+	},
+	"keywords": [
+		"water supply failure",
+		"simar-louresodivelas",
+		"simar",
+		"loures",
+		"odivelas"
+	],
+	"author": "Hugo Monteiro",
+	"license": "AGPL-3.0-or-later",
+	"dependencies": {
+		"@sendgrid/mail": "^7.4.2",
+		"crawler": "^1.2.1",
+		"node-html-parser": "^1.2.13",
+		"nodemailer": "^6.6.1"
+	}
 }
