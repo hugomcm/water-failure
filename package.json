@@ -1,6 +1,6 @@
 {
 	"name": "@doit4u/water-failure",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Checks the water supply failure for a certain keyword",
 	"scripts": {
 		"start": "node index.js",
