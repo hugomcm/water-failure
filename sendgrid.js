@@ -4,26 +4,28 @@
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.WF_SENDGRID_API_KEY)
 
-module.exports = ({ from, to }, subject, lineMessages) => {
-  const txtMsg = lineMessages.map(msg => ` - ${msg}`).join('\n')
-  const htmlMsg = '<ul>' + lineMessages.map(msg => `<li>${msg}</li>`).join('\n') + '</ul>'
-  const email = {
-    from,
-    to,
-    subject,
-    text: txtMsg,
-    html: `<div>${htmlMsg}</div>`,
-  }
-  return sgMail
-    .send(email)
-    .then(info => {
-      console.log('Email sent')
-      // console.log(info)
-      // console.log(info.envelope);
-      // console.log(info.messageId);
-      return info
-    })
-    .catch(error => {
-      console.error(error)
-    })
-}
+module.exports =
+	({ from, to }) =>
+	(subject, lineMessages) => {
+		const txtMsg = lineMessages.map(msg => ` - ${msg}`).join('\n')
+		const htmlMsg = '<ul>' + lineMessages.map(msg => `<li>${msg}</li>`).join('\n') + '</ul>'
+		const email = {
+			from,
+			to,
+			subject,
+			text: txtMsg,
+			html: `<div>${htmlMsg}</div>`,
+		}
+		return sgMail
+			.send(email)
+			.then(info => {
+				console.log('Email sent')
+				// console.log(info)
+				// console.log(info.envelope);
+				// console.log(info.messageId);
+				return info
+			})
+			.catch(error => {
+				console.error(error)
+			})
+	}
