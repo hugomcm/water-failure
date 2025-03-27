@@ -1,31 +1,25 @@
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
+import sgMail from '@sendgrid/mail'
 
-const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.WF_SENDGRID_API_KEY)
 
-module.exports =
-	({ from, to }) =>
+export default ({ from, to }) =>
 	(subject, lineMessages) => {
 		const txtMsg = lineMessages.map(msg => ` - ${msg}`).join('\n')
-		const htmlMsg = '<ul>' + lineMessages.map(msg => `<li>${msg}</li>`).join('\n') + '</ul>'
+		const htmlMsg = lineMessages.join('<br/>')
 		const email = {
 			from,
 			to,
 			subject,
-			text: txtMsg,
-			html: `<div>${htmlMsg}</div>`,
+			text: txtMsg.length === 0 ? ' ' : txtMsg,
+			html: `<strong>Mensagem:</strong> <div>${htmlMsg}</div>`,
 		}
 		return sgMail
 			.send(email)
-			.then(info => {
-				console.log('Email sent')
-				// console.log(info)
-				// console.log(info.envelope);
-				// console.log(info.messageId);
-				return info
-			})
-			.catch(error => {
+			// .then(info => info)
+			.catch(({ response, ...error }) => {
 				console.error(error)
+				console.error(response?.body)
 			})
 	}
